@@ -57,8 +57,9 @@
             left: 0;
             width: 100%;
             z-index: 1000;
-            background-color: rgba(255, 255, 255, 0.98);
-            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            padding: 10px 0;
             transition: all 0.3s ease;
         }
 
@@ -66,7 +67,9 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 15px 0;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
 
         .logo {
@@ -76,37 +79,29 @@
         }
 
         .logo-icon {
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
-            border-radius: 10px;
+            width: 60px;
+            height: 60px;
+            background: var(--light-color);
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
-            font-weight: 800;
+            color: var(--primary-dark);
+            font-weight: bold;
             font-size: 24px;
             margin-right: 15px;
         }
 
-        .logo-text {
-            display: flex;
-            flex-direction: column;
-        }
-
         .logo-main {
-            font-size: 24px;
-            font-weight: 800;
-            color: var(--primary-dark);
-            line-height: 1;
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--light-color);
         }
 
         .logo-sub {
             font-size: 12px;
-            color: var(--secondary-color);
-            font-weight: 600;
-            letter-spacing: 1px;
-            text-transform: uppercase;
+            color: var(--light-color);
+            opacity: 0.8;
         }
 
         .main-nav ul {
@@ -121,47 +116,33 @@
         }
 
         .nav-link {
-            color: var(--dark-color);
-            text-decoration: none;
-            font-weight: 600;
+            color: var(--light-color);
             font-size: 15px;
-            padding: 8px 0;
-            position: relative;
-            transition: all 0.3s ease;
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+            text-decoration: none;
         }
 
         .nav-link:hover,
         .nav-link.active {
-            color: var(--primary-color);
+            background-color: var(--light-color);
+            color: var(--primary-dark);
         }
 
-        .nav-link:after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 3px;
-            background-color: var(--primary-color);
-            left: 0;
-            bottom: 0;
-            border-radius: 3px;
-            transition: width 0.3s ease;
-        }
-
-        .nav-link:hover:after,
-        .nav-link.active:after {
-            width: 100%;
-        }
-
+        /* Le bouton hamburger est caché par défaut */
         .mobile-menu-btn {
             display: none;
+            color: var(--light-color);
+            font-size: 28px;
             background: none;
             border: none;
-            font-size: 24px;
-            color: var(--primary-color);
             cursor: pointer;
+            z-index: 1001;
+            padding: 5px;
         }
 
-        /* Hero Section avec Vidéo - MODIFIÉ */
+        /* Hero Section avec Vidéo */
         .hero-section {
             padding-top: 150px;
             padding-bottom: 100px;
@@ -187,10 +168,8 @@
             height: 100%;
             object-fit: cover;
             filter: brightness(0.9);
-            /* Ajuste la luminosité de la vidéo */
         }
 
-        /* Overlay plus léger pour laisser voir la vidéo */
         .video-overlay {
             position: absolute;
             top: 0;
@@ -199,10 +178,7 @@
             height: 100%;
             background: linear-gradient(to bottom,
                     rgba(26, 29, 39, 0.4),
-                    /* Plus transparent */
-                    rgba(46, 49, 146, 0.5)
-                    /* Plus transparent */
-                );
+                    rgba(46, 49, 146, 0.5));
             z-index: -1;
         }
 
@@ -231,13 +207,11 @@
             margin-bottom: 20px;
             line-height: 1.2;
             text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
-            /* Ombre plus prononcée */
         }
 
         .hero-subtitle {
             font-size: 1.2rem;
             color: rgba(255, 255, 255, 0.95);
-            /* Texte plus visible */
             margin-bottom: 30px;
             max-width: 600px;
             text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.4);
@@ -247,7 +221,6 @@
             color: var(--accent-color);
             font-weight: 700;
             background-color: rgba(255, 255, 255, 0.1);
-            /* Fond léger pour les mots clés */
             padding: 2px 6px;
             border-radius: 4px;
         }
@@ -272,7 +245,6 @@
             border: none;
             cursor: pointer;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-            /* Ombre plus prononcée */
         }
 
         .btn-primary:hover {
@@ -284,7 +256,6 @@
 
         .btn-secondary {
             background-color: rgba(255, 255, 255, 0.15);
-            /* Fond semi-transparent */
             color: white;
             padding: 14px 32px;
             border-radius: 8px;
@@ -295,7 +266,6 @@
             transition: all 0.3s ease;
             border: 2px solid rgba(255, 255, 255, 0.4);
             backdrop-filter: blur(5px);
-            /* Effet de flou */
         }
 
         .btn-secondary:hover {
@@ -346,7 +316,7 @@
             font-weight: 600;
         }
 
-        /* Services Section - NOUVEAU STYLE SANS BORDURES */
+        /* Services Section */
         .services-section {
             padding: 100px 0;
             background-color: var(--light-color);
@@ -376,11 +346,9 @@
             gap: 40px;
         }
 
-        /* NOUVEAU STYLE DES CARTES - SANS BORDURES */
         .service-card {
             background-color: white;
             border-radius: 0;
-            /* Supprimé le border-radius */
             overflow: hidden;
             transition: all 0.4s ease;
             height: 100%;
@@ -388,20 +356,15 @@
             flex-direction: column;
             position: relative;
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
-            /* Ombre plus légère */
         }
 
         .service-card:hover {
             transform: translateY(-10px);
-            /* Animation plus subtile */
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
-            /* Ombre au hover */
         }
 
-        /* Style d'image amélioré */
         .service-image {
             height: 600px;
-            /* Légèrement augmenté */
             overflow: hidden;
             flex-shrink: 0;
             position: relative;
@@ -416,27 +379,8 @@
 
         .service-card:hover .service-image img {
             transform: scale(1.08);
-            /* Zoom plus subtil */
         }
 
-        /* Overlay coloré sur l'image au hover */
-        .service-image::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to bottom, transparent 50%, rgba(46, 49, 146, 0.1));
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .service-card:hover .service-image::after {
-            opacity: 1;
-        }
-
-        /* Contenu amélioré */
         .service-content {
             padding: 35px;
             flex-grow: 1;
@@ -449,9 +393,7 @@
             width: 70px;
             height: 70px;
             background-color: rgba(46, 49, 146, 0.08);
-            /* Plus léger */
             border-radius: 0;
-            /* Supprimé le border-radius */
             display: flex;
             align-items: center;
             justify-content: center;
@@ -540,9 +482,8 @@
         .gallery-item {
             position: relative;
             border-radius: 0;
-            /* Supprimé le border-radius */
             overflow: hidden;
-            height: 300px;
+            height: 400px;
         }
 
         .gallery-item img {
@@ -583,7 +524,6 @@
             color: white;
             padding: 12px 30px;
             border-radius: 0;
-            /* Supprimé le border-radius */
             font-weight: 600;
             text-decoration: none;
             transition: all 0.3s ease;
@@ -611,7 +551,6 @@
 
         .about-image {
             border-radius: 0;
-            /* Supprimé le border-radius */
             overflow: hidden;
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
         }
@@ -648,7 +587,6 @@
             height: 40px;
             background-color: rgba(0, 166, 81, 0.1);
             border-radius: 0;
-            /* Supprimé le border-radius */
             display: flex;
             align-items: center;
             justify-content: center;
@@ -699,7 +637,6 @@
             height: 50px;
             background-color: rgba(46, 49, 146, 0.1);
             border-radius: 0;
-            /* Supprimé le border-radius */
             display: flex;
             align-items: center;
             justify-content: center;
@@ -712,7 +649,6 @@
             background-color: var(--light-color);
             padding: 40px;
             border-radius: 0;
-            /* Supprimé le border-radius */
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
         }
 
@@ -725,7 +661,6 @@
             padding: 14px 20px;
             border: 1px solid var(--border-color);
             border-radius: 0;
-            /* Supprimé le border-radius */
             font-family: 'Inter', sans-serif;
             font-size: 16px;
             transition: all 0.3s ease;
@@ -768,7 +703,6 @@
             height: 40px;
             background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
             border-radius: 0;
-            /* Supprimé le border-radius */
             display: flex;
             align-items: center;
             justify-content: center;
@@ -840,7 +774,6 @@
             height: 40px;
             background-color: rgba(255, 255, 255, 0.1);
             border-radius: 0;
-            /* Supprimé le border-radius */
             display: flex;
             align-items: center;
             justify-content: center;
@@ -871,7 +804,6 @@
             background-color: #25D366;
             color: white;
             border-radius: 0;
-            /* Supprimé le border-radius */
             display: flex;
             align-items: center;
             justify-content: center;
@@ -888,7 +820,254 @@
             box-shadow: 0 8px 20px rgba(37, 211, 102, 0.5);
         }
 
-        /* Responsive */
+        /* Style du bouton Appeler maintenant */
+        .call-button-container {
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .btn-call-now {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: linear-gradient(135deg, #2ecc71, #27ae60);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(46, 204, 113, 0.3);
+            border: none;
+            cursor: pointer;
+            min-width: 200px;
+        }
+
+        .btn-call-now:hover {
+            background: linear-gradient(135deg, #27ae60, #219653);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(46, 204, 113, 0.4);
+            color: white;
+            text-decoration: none;
+        }
+
+        .btn-call-now:active {
+            transform: translateY(-1px);
+        }
+
+        .btn-call-now i {
+            font-size: 1.2rem;
+        }
+
+        /* Animation pour attirer l'attention */
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(46, 204, 113, 0.7);
+            }
+
+            70% {
+                box-shadow: 0 0 0 10px rgba(46, 204, 113, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(46, 204, 113, 0);
+            }
+        }
+
+        .btn-call-now {
+            animation: pulse 2s infinite;
+        }
+
+        /* SECTION DEVIS */
+        .devis-section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-color) 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .devis-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="rgba(255,255,255,0.03)" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,112C672,96,768,96,864,112C960,128,1056,160,1152,160C1248,160,1344,128,1392,112L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
+            background-repeat: no-repeat;
+            background-position: bottom;
+            background-size: cover;
+            opacity: 0.5;
+        }
+
+        .devis-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .devis-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .devis-header h2 {
+            font-size: 2rem;
+            color: white;
+            margin-bottom: 10px;
+            font-weight: 600;
+            letter-spacing: 2px;
+        }
+
+        .devis-header h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 15px;
+            color: white;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .devis-header .tagline {
+            font-size: 1.3rem;
+            color: rgba(255, 255, 255, 0.9);
+            font-style: italic;
+            margin-top: 10px;
+            font-weight: 300;
+        }
+
+        .devis-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            align-items: center;
+        }
+
+        .devis-values {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .value-item {
+            margin-bottom: 30px;
+        }
+
+        .value-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .value-item h3 {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+            color: var(--accent-color);
+        }
+
+        .value-item p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .devis-form-container {
+            background: white;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            color: var(--dark-color);
+        }
+
+        .devis-form-title {
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            color: var(--primary-dark);
+            font-weight: 700;
+        }
+
+        .devis-form .form-group {
+            margin-bottom: 20px;
+        }
+
+        .devis-form .form-control {
+            width: 100%;
+            padding: 14px 20px;
+            border: 1px solid var(--border-color);
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            background: #fff;
+            color: var(--dark-color);
+        }
+
+        .devis-form .form-control:focus {
+            outline: none;
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 3px rgba(255, 107, 0, 0.1);
+        }
+
+        .devis-form select.form-control {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%232E3192' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14L2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 20px center;
+            padding-right: 50px;
+        }
+
+        .devis-form textarea.form-control {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .btn-devis {
+            background-color: var(--accent-color);
+            color: white;
+            padding: 16px 32px;
+            border-radius: 8px;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .btn-devis:hover {
+            background-color: #E05A00;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(255, 107, 0, 0.3);
+        }
+
+        .devis-note {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 0.9rem;
+            color: var(--gray-color);
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ====================== RESPONSIVE ====================== */
+
+        /* Pour les écrans moyens et petits */
         @media (max-width: 992px) {
 
             .about-container,
@@ -904,41 +1083,60 @@
             .services-grid {
                 grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             }
-        }
 
-        @media (max-width: 768px) {
-            .main-nav {
-                position: fixed;
-                top: 80px;
-                left: 0;
-                width: 100%;
-                background-color: white;
-                padding: 20px;
-                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-                transform: translateY(-100%);
-                opacity: 0;
-                visibility: hidden;
-                transition: all 0.3s ease;
+            .devis-header h1 {
+                font-size: 2.8rem;
             }
 
-            .main-nav.active {
-                transform: translateY(0);
-                opacity: 1;
-                visibility: visible;
+            .devis-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
             }
 
+            /* Masquer le menu normal et afficher le bouton hamburger */
             .main-nav ul {
-                flex-direction: column;
-            }
-
-            .main-nav li {
-                margin: 0 0 15px 0;
+                display: none;
             }
 
             .mobile-menu-btn {
                 display: block;
             }
 
+            /* Menu hamburger en mode mobile */
+            .main-nav ul.mobile-active {
+                display: flex;
+                flex-direction: column;
+                position: fixed;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background: linear-gradient(180deg, var(--primary-dark), var(--primary-color));
+                padding: 20px;
+                z-index: 1000;
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            }
+
+            .main-nav ul.mobile-active li {
+                margin: 0 0 15px 0;
+                width: 100%;
+            }
+
+            .main-nav ul.mobile-active .nav-link {
+                display: block;
+                padding: 15px;
+                text-align: center;
+                font-size: 18px;
+                border-radius: 5px;
+            }
+
+            .main-nav ul.mobile-active .nav-link:hover {
+                background-color: var(--light-color);
+                color: var(--primary-dark);
+            }
+        }
+
+        /* Pour les écrans mobiles */
+        @media (max-width: 768px) {
             .hero-section {
                 padding-top: 120px;
                 min-height: 90vh;
@@ -975,8 +1173,30 @@
             .service-title {
                 font-size: 1.4rem;
             }
+
+            .devis-header h1 {
+                font-size: 2.2rem;
+            }
+
+            .devis-header h2 {
+                font-size: 1.5rem;
+            }
+
+            .value-item h3 {
+                font-size: 1.8rem;
+            }
+
+            .devis-values,
+            .devis-form-container {
+                padding: 30px;
+            }
+
+            .gallery-item {
+                height: 300px;
+            }
         }
 
+        /* Pour les très petits écrans */
         @media (max-width: 480px) {
             .service-image {
                 height: 240px;
@@ -985,18 +1205,37 @@
             .service-content {
                 padding: 25px;
             }
-        }
 
-        /* Animations */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
-        }
+            .btn-call-now {
+                width: 100%;
+                max-width: 300px;
+                padding: 14px 20px;
+            }
 
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
+            .devis-header h1 {
+                font-size: 1.8rem;
+            }
+
+            .devis-header h2 {
+                font-size: 1.2rem;
+            }
+
+            .devis-header .tagline {
+                font-size: 1rem;
+            }
+
+            .value-item h3 {
+                font-size: 1.5rem;
+            }
+
+            .devis-values,
+            .devis-form-container {
+                padding: 20px;
+            }
+
+            .gallery-item {
+                height: 250px;
+            }
         }
     </style>
 </head>
@@ -1024,11 +1263,12 @@
                 </button>
 
                 <nav class="main-nav" id="mainNav">
-                    <ul>
-                        <li><a href="#accueil" class="nav-link active">Accueil</a></li>
+                    <ul id="navMenu">
+                        <li><a href="index.html" class="nav-link">Accueil</a></li>
                         <li><a href="#services" class="nav-link">Services</a></li>
                         <li><a href="galerie.html" class="nav-link">Galerie</a></li>
                         <li><a href="#apropos" class="nav-link">À propos</a></li>
+                        <li><a href="#devis" class="nav-link">Devis</a></li>
                         <li><a href="#contact" class="nav-link">Contact</a></li>
                     </ul>
                 </nav>
@@ -1039,14 +1279,10 @@
     <!-- Hero Section avec Vidéo AMÉLIORÉE -->
     <section id="accueil" class="hero-section">
         <div class="video-background">
-            <!-- Vidéo locale qui tourne en boucle -->
             <video autoplay muted loop playsinline id="heroVideo">
-                <!-- Utilisez votre vidéo locale medias_stp.mp4 -->
-                <source src="médias_stp/vidéo_fond_header.mp4" type="video/mp4">
-                <!-- Sources de secours si la vidéo locale ne fonctionne pas -->
-                <source src="médias_stp/vidéo_fond_header.mp4" type="video/mp4">
-                <source src="médias_stp/vidéo_fond_header.mp4" type="video/mp4">
-                <!-- Fallback image si la vidéo ne charge pas -->
+                <source src="médias/vidéo_fond_header.mp4" type="video/mp4">
+                <source src="médias/vidéo_fond_header.mp4" type="video/mp4">
+                <source src="médias/vidéo_fond_header.mp4" type="video/mp4">
             </video>
         </div>
         <div class="video-overlay"></div>
@@ -1064,7 +1300,7 @@
                 </p>
 
                 <div class="cta-buttons">
-                    <a href="#contact" class="btn-primary">
+                    <a href="#devis" class="btn-primary">
                         <i class="bi bi-chat-left-text me-2"></i> Demander un devis
                     </a>
                     <a href="#services" class="btn-secondary">
@@ -1113,7 +1349,7 @@
             <div class="services-grid">
                 <div class="service-card fade-in">
                     <div class="service-image">
-                        <img src="médias_stp/projet3.jpg" alt="Peinture Industrielle">
+                        <img src="médias/projet3.jpg" alt="Peinture Industrielle">
                     </div>
                     <div class="service-content">
                         <div class="service-icon">
@@ -1125,7 +1361,7 @@
                             Traitements anticorrosion, peintures époxy et polyuréthane.
                             Notre expertise garantit des finitions durables et professionnelles.
                         </p>
-                        <a href="#contact" class="service-link">
+                        <a href="#devis" class="service-link">
                             Demander un devis <i class="bi bi-arrow-right"></i>
                         </a>
                     </div>
@@ -1133,7 +1369,7 @@
 
                 <div class="service-card fade-in">
                     <div class="service-image">
-                        <img src="médias_stp/projet1.jpg" alt="Plafonds Modernes">
+                        <img src="médias/projet1.jpg" alt="Plafonds Modernes">
                     </div>
                     <div class="service-content">
                         <div class="service-icon">
@@ -1144,7 +1380,7 @@
                             Installation de plafonds suspendus, acoustiques, décoratifs et faux plafonds.
                             Solutions modernes adaptées à vos besoins esthétiques et fonctionnels.
                         </p>
-                        <a href="#contact" class="service-link">
+                        <a href="#devis" class="service-link">
                             Demander un devis <i class="bi bi-arrow-right"></i>
                         </a>
                     </div>
@@ -1152,7 +1388,7 @@
 
                 <div class="service-card fade-in">
                     <div class="service-image">
-                        <img src="médias_stp/projet2.jpg" alt="Peinture Décorative">
+                        <img src="médias/projet2.jpg" alt="Peinture Décorative">
                     </div>
                     <div class="service-content">
                         <div class="service-icon">
@@ -1163,7 +1399,7 @@
                             Peinture intérieure et extérieure pour bureaux, commerces et résidences.
                             Finitions personnalisées et effets décoratifs pour transformer vos espaces.
                         </p>
-                        <a href="#contact" class="service-link">
+                        <a href="#devis" class="service-link">
                             Demander un devis <i class="bi bi-arrow-right"></i>
                         </a>
                     </div>
@@ -1185,53 +1421,33 @@
 
             <div class="gallery-preview">
                 <div class="gallery-item fade-in">
-                    <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
-                        alt="Projet 1">
+                    <img src="médias/réalisation1.jpg" alt="Projet 1">
                     <div class="gallery-overlay">
-                        <div>
-                            <h4>Peinture industrielle</h4>
-                            <p>Atelier de production</p>
-                        </div>
                     </div>
                 </div>
 
                 <div class="gallery-item fade-in">
-                    <img src="https://images.unsplash.com/photo-1541140532154-b024d705b90a?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
-                        alt="Projet 2">
+                    <img src="médias/réalisation2.jpg" alt="Projet 2">
                     <div class="gallery-overlay">
-                        <div>
-                            <h4>Plafond moderne</h4>
-                            <p>Bureau exécutif</p>
-                        </div>
                     </div>
                 </div>
 
                 <div class="gallery-item fade-in">
-                    <img src="https://images.unsplash.com/photo-1560185007-5f0bb1866cab?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
-                        alt="Projet 3">
+                    <img src="médias/réalisation3.jpg" alt="Projet 3">
                     <div class="gallery-overlay">
-                        <div>
-                            <h4>Peinture d'entrepôt</h4>
-                            <p>Entrepôt logistique</p>
-                        </div>
                     </div>
                 </div>
 
                 <div class="gallery-item fade-in">
-                    <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
-                        alt="Projet 4">
+                    <img src="médias/réalisation4.jpg" alt="Projet 4">
                     <div class="gallery-overlay">
-                        <div>
-                            <h4>Transformation</h4>
-                            <p>Avant/Après</p>
-                        </div>
                     </div>
                 </div>
             </div>
 
             <div class="text-center fade-in">
                 <a href="galerie.html" class="view-all-btn">
-                    <i class="bi bi-images me-2"></i> Voir toute la galerie
+                    <i class="bi bi-images me-2"></i> Voir la galerie
                 </a>
             </div>
         </div>
@@ -1242,7 +1458,7 @@
         <div class="container">
             <div class="about-container">
                 <div class="about-image fade-in">
-                    <img src="médias_stp/about1.jpg" alt="À propos de STP">
+                    <img src="médias/about.jpg" alt="À propos de STP">
                 </div>
 
                 <div class="about-content fade-in">
@@ -1287,6 +1503,90 @@
                                 <p>Livraison dans les délais convenus</p>
                             </div>
                         </div>
+                    </div>
+
+                    <!-- Bouton Appeler Maintenant -->
+                    <div class="call-button-container">
+                        <a href="tel:+243971732221" class="btn-call-now">
+                            <i class="bi bi-telephone-fill"></i>
+                            Appeler maintenant
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Devis -->
+    <section id="devis" class="devis-section">
+        <div class="container">
+            <div class="devis-container fade-in">
+                <div class="devis-header">
+                    <h2>HOME</h2>
+                    <h1>PAINT</h1>
+                    <p class="tagline">TAGLINE HERE</p>
+                </div>
+
+                <div class="devis-content">
+                    <div class="devis-values">
+                        <div class="value-item">
+                            <h3>PROPRIETE</h3>
+                            <p>Chaque projet est réalisé avec un sens aigu de la propriété. Nous nous approprions vos
+                                besoins comme s'ils étaient les nôtres, garantissant une exécution impeccable et un
+                                suivi rigoureux du début à la fin.</p>
+                        </div>
+                        <div class="value-item">
+                            <h3>BEAUTE</h3>
+                            <p>Nous créons des espaces qui allient esthétique et fonctionnalité. Notre expertise en
+                                design et en finitions assure des résultats visuellement exceptionnels qui reflètent
+                                votre identité.</p>
+                        </div>
+                        <div class="value-item">
+                            <h3>QUALITE</h3>
+                            <p>Engagés dans l'excellence, nous utilisons uniquement des matériaux de première qualité et
+                                appliquons les meilleures pratiques industrielles pour garantir la durabilité et la
+                                satisfaction.</p>
+                        </div>
+                    </div>
+
+                    <div class="devis-form-container">
+                        <h3 class="devis-form-title">Demandez votre devis gratuit</h3>
+                        <form class="devis-form" id="devisForm">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Votre nom complet" required>
+                            </div>
+
+                            <div class="form-group">
+                                <input type="tel" class="form-control" placeholder="Votre numéro de téléphone" required>
+                            </div>
+
+                            <div class="form-group">
+                                <input type="email" class="form-control" placeholder="Votre adresse email" required>
+                            </div>
+
+                            <div class="form-group">
+                                <select class="form-control" required>
+                                    <option value="" disabled selected>Type de service</option>
+                                    <option value="peinture">Peinture Industrielle</option>
+                                    <option value="plafond">Plafonds Modernes</option>
+                                    <option value="decorative">Peinture Décorative</option>
+                                    <option value="autre">Autre Service</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <textarea class="form-control"
+                                    placeholder="Description de votre projet (surface, type de bâtiment, délais, etc.)"
+                                    required></textarea>
+                            </div>
+
+                            <button type="submit" class="btn-devis">
+                                <i class="bi bi-file-earmark-text me-2"></i> Obtenir mon devis
+                            </button>
+
+                            <p class="devis-note">Nous vous répondrons sous 24h avec un devis détaillé et personnalisé.
+                            </p>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -1409,6 +1709,7 @@
                             <li><a href="#services">Nos services</a></li>
                             <li><a href="galerie.html">Galerie</a></li>
                             <li><a href="#apropos">À propos</a></li>
+                            <li><a href="#devis">Devis</a></li>
                             <li><a href="#contact">Contact</a></li>
                         </ul>
                     </div>
@@ -1460,49 +1761,48 @@
             // Gestion de la vidéo de fond
             const heroVideo = document.getElementById('heroVideo');
             if (heroVideo) {
-                // Forcer la lecture de la vidéo
                 heroVideo.play().catch(function (error) {
                     console.log("La vidéo n'a pas pu être lue automatiquement:", error);
-                    // Fallback: Afficher un message ou utiliser une image de fond
                     document.querySelector('.video-background').innerHTML =
                         '<div style="width:100%;height:100%;background:linear-gradient(rgba(26,29,39,0.6), rgba(46,49,146,0.7)), url(https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80) center/cover;"></div>';
                 });
             }
 
-            // Option pour ajuster l'overlay si nécessaire
-            const adjustOverlay = () => {
-                const overlay = document.querySelector('.video-overlay');
-                // Vous pouvez ajuster l'opacité ici si nécessaire
-                // overlay.style.backgroundColor = 'rgba(26, 29, 39, 0.5)'; // Exemple: overlay plus transparent
-            };
-
-            // Menu mobile
+            // Menu mobile - gestion du hamburger
             const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-            const mainNav = document.getElementById('mainNav');
+            const navMenu = document.getElementById('navMenu');
 
-            mobileMenuBtn.addEventListener('click', function () {
-                mainNav.classList.toggle('active');
-                mobileMenuBtn.innerHTML = mainNav.classList.contains('active')
-                    ? '<i class="bi bi-x"></i>'
-                    : '<i class="bi bi-list"></i>';
-            });
-
-            // Fermer le menu au clic sur un lien
-            document.querySelectorAll('.nav-link').forEach(link => {
-                link.addEventListener('click', function () {
-                    mainNav.classList.remove('active');
-                    mobileMenuBtn.innerHTML = '<i class="bi bi-list"></i>';
+            if (mobileMenuBtn && navMenu) {
+                mobileMenuBtn.addEventListener('click', function () {
+                    navMenu.classList.toggle('mobile-active');
+                    mobileMenuBtn.innerHTML = navMenu.classList.contains('mobile-active')
+                        ? '<i class="bi bi-x"></i>'
+                        : '<i class="bi bi-list"></i>';
                 });
-            });
+
+                // Fermer le menu au clic sur un lien (uniquement en mobile)
+                document.querySelectorAll('.nav-link').forEach(link => {
+                    link.addEventListener('click', function () {
+                        // Vérifier si on est en mode mobile (menu hamburger actif)
+                        if (window.innerWidth <= 992 && navMenu.classList.contains('mobile-active')) {
+                            navMenu.classList.remove('mobile-active');
+                            mobileMenuBtn.innerHTML = '<i class="bi bi-list"></i>';
+                        }
+                    });
+                });
+            }
 
             // Gestion du formulaire de contact
             document.getElementById('contactForm').addEventListener('submit', function (e) {
                 e.preventDefault();
-
-                // Simulation d'envoi
                 alert('Merci ! Votre message a été envoyé avec succès. Nous vous répondrons dans les plus brefs délais.');
+                this.reset();
+            });
 
-                // Réinitialisation du formulaire
+            // Gestion du formulaire de devis
+            document.getElementById('devisForm').addEventListener('submit', function (e) {
+                e.preventDefault();
+                alert('Merci pour votre demande de devis ! Nous vous contacterons dans les 24 heures pour discuter de votre projet.');
                 this.reset();
             });
 
@@ -1539,33 +1839,47 @@
                 });
             }, 500);
 
-            // Navigation fluide
+            // Navigation fluide (uniquement pour les liens vers les ancres)
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function (e) {
                     if (this.getAttribute('href') === '#') return;
 
-                    e.preventDefault();
-
                     const targetId = this.getAttribute('href');
-                    const targetElement = document.querySelector(targetId);
 
-                    if (targetElement) {
-                        window.scrollTo({
-                            top: targetElement.offsetTop - 80,
-                            behavior: 'smooth'
-                        });
+                    // Vérifier si c'est une ancre interne (commence par #)
+                    if (targetId.startsWith('#') && targetId !== '#') {
+                        e.preventDefault();
+                        const targetElement = document.querySelector(targetId);
 
-                        // Mettre à jour la navigation active
-                        document.querySelectorAll('.nav-link').forEach(link => {
-                            link.classList.remove('active');
-                        });
-                        this.classList.add('active');
+                        if (targetElement) {
+                            window.scrollTo({
+                                top: targetElement.offsetTop - 80,
+                                behavior: 'smooth'
+                            });
+
+                            // Mettre à jour la navigation active
+                            document.querySelectorAll('.nav-link').forEach(link => {
+                                link.classList.remove('active');
+                            });
+                            this.classList.add('active');
+                        }
                     }
                 });
             });
 
-            // Ajuster l'overlay après chargement
-            setTimeout(adjustOverlay, 1000);
+            // Fermer le menu hamburger si on clique en dehors
+            document.addEventListener('click', function (event) {
+                const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+                const navMenu = document.getElementById('navMenu');
+
+                if (navMenu && navMenu.classList.contains('mobile-active') &&
+                    mobileMenuBtn && !mobileMenuBtn.contains(event.target) &&
+                    navMenu && !navMenu.contains(event.target)) {
+
+                    navMenu.classList.remove('mobile-active');
+                    mobileMenuBtn.innerHTML = '<i class="bi bi-list"></i>';
+                }
+            });
         });
     </script>
 </body>
