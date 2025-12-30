@@ -78,18 +78,14 @@
             text-decoration: none;
         }
 
-        .logo-icon {
+        .logo-img {
             width: 60px;
             height: 60px;
-            background: var(--light-color);
             border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--primary-dark);
-            font-weight: bold;
-            font-size: 24px;
+            object-fit: cover;
             margin-right: 15px;
+            border: 3px solid var(--light-color);
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
         }
 
         .logo-main {
@@ -130,7 +126,7 @@
             color: var(--primary-dark);
         }
 
-        /* Le bouton hamburger est caché par défaut */
+        /* Menu mobile */
         .mobile-menu-btn {
             display: none;
             color: var(--light-color);
@@ -698,18 +694,13 @@
             margin-bottom: 20px;
         }
 
-        .footer-logo-icon {
+        .footer-logo-img {
             width: 40px;
             height: 40px;
-            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
-            border-radius: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: 800;
-            font-size: 20px;
+            border-radius: 50%;
+            object-fit: cover;
             margin-right: 10px;
+            border: 2px solid var(--secondary-color);
         }
 
         .footer-logo-text {
@@ -1093,18 +1084,13 @@
                 gap: 30px;
             }
 
-            /* Masquer le menu normal et afficher le bouton hamburger */
-            .main-nav ul {
-                display: none;
-            }
-
+            /* Menu mobile */
             .mobile-menu-btn {
                 display: block;
             }
 
-            /* Menu hamburger en mode mobile */
-            .main-nav ul.mobile-active {
-                display: flex;
+            .main-nav ul {
+                display: none;
                 flex-direction: column;
                 position: fixed;
                 top: 80px;
@@ -1116,12 +1102,16 @@
                 box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
             }
 
-            .main-nav ul.mobile-active li {
+            .main-nav ul.active {
+                display: flex;
+            }
+
+            .main-nav ul li {
                 margin: 0 0 15px 0;
                 width: 100%;
             }
 
-            .main-nav ul.mobile-active .nav-link {
+            .main-nav ul .nav-link {
                 display: block;
                 padding: 15px;
                 text-align: center;
@@ -1129,7 +1119,7 @@
                 border-radius: 5px;
             }
 
-            .main-nav ul.mobile-active .nav-link:hover {
+            .main-nav ul .nav-link:hover {
                 background-color: var(--light-color);
                 color: var(--primary-dark);
             }
@@ -1251,9 +1241,10 @@
         <div class="container">
             <div class="header-container">
                 <a href="#" class="logo">
-                    <div class="logo-icon">STP</div>
+                    <!-- Remplacez "médias/logo-stp.jpg" par le chemin de votre image logo -->
+                    <img src="médias/logo.jpg" alt="Logo STP" class="logo-img">
                     <div class="logo-text">
-                        <div class="logo-main">Service Toujours Profitable</div>
+                        <div class="logo-main">STP</div>
                         <div class="logo-sub">Peinture Industrielle Plafond Moderne & autres services</div>
                     </div>
                 </a>
@@ -1674,7 +1665,8 @@
             <div class="footer-grid">
                 <div class="footer-col">
                     <a href="#" class="footer-logo">
-                        <div class="footer-logo-icon">STP</div>
+                        <!-- Remplacez "médias/logo-stp-small.jpg" par le chemin de votre image logo plus petite -->
+                        <img src="médias/logo-stp-small.jpg" alt="Logo STP" class="footer-logo-img">
                         <div class="footer-logo-text">
                             <div class="footer-logo-main">Service Toujours Profitable</div>
                             <div class="footer-logo-sub">Peinture Industrielle & Plafond Moderne</div>
@@ -1691,12 +1683,6 @@
                         </a>
                         <a href="#" class="social-link">
                             <i class="bi bi-instagram"></i>
-                        </a>
-                        <a href="https://wa.me/243971732221" class="social-link" target="_blank">
-                            <i class="bi bi-whatsapp"></i>
-                        </a>
-                        <a href="#" class="social-link">
-                            <i class="bi bi-youtube"></i>
                         </a>
                     </div>
                 </div>
@@ -1744,7 +1730,8 @@
             <div class="footer-bottom">
                 <p>&copy; <span id="currentYear"></span> Service Toujours Profitable (STP). Tous droits réservés. |
                     Kolwezi, RDC</p>
-                <p>Site développé pour la promotion de l'entreprise de peinture industrielle et plafonds modernes</p>
+                <p>Site développé pour la promotion de l'entreprise de peinture industrielle et plafonds modernes par <a
+                        href="https://socrateedgard.github.io./portfolio/"></a>Socrate Kasongo</p>
             </div>
         </div>
     </footer>
@@ -1774,8 +1761,8 @@
 
             if (mobileMenuBtn && navMenu) {
                 mobileMenuBtn.addEventListener('click', function () {
-                    navMenu.classList.toggle('mobile-active');
-                    mobileMenuBtn.innerHTML = navMenu.classList.contains('mobile-active')
+                    navMenu.classList.toggle('active');
+                    mobileMenuBtn.innerHTML = navMenu.classList.contains('active')
                         ? '<i class="bi bi-x"></i>'
                         : '<i class="bi bi-list"></i>';
                 });
@@ -1784,8 +1771,8 @@
                 document.querySelectorAll('.nav-link').forEach(link => {
                     link.addEventListener('click', function () {
                         // Vérifier si on est en mode mobile (menu hamburger actif)
-                        if (window.innerWidth <= 992 && navMenu.classList.contains('mobile-active')) {
-                            navMenu.classList.remove('mobile-active');
+                        if (window.innerWidth <= 992 && navMenu.classList.contains('active')) {
+                            navMenu.classList.remove('active');
                             mobileMenuBtn.innerHTML = '<i class="bi bi-list"></i>';
                         }
                     });
@@ -1872,11 +1859,11 @@
                 const mobileMenuBtn = document.getElementById('mobileMenuBtn');
                 const navMenu = document.getElementById('navMenu');
 
-                if (navMenu && navMenu.classList.contains('mobile-active') &&
+                if (navMenu && navMenu.classList.contains('active') &&
                     mobileMenuBtn && !mobileMenuBtn.contains(event.target) &&
                     navMenu && !navMenu.contains(event.target)) {
 
-                    navMenu.classList.remove('mobile-active');
+                    navMenu.classList.remove('active');
                     mobileMenuBtn.innerHTML = '<i class="bi bi-list"></i>';
                 }
             });
