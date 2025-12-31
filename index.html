@@ -126,19 +126,29 @@
             color: var(--primary-dark);
         }
 
-        /* Menu mobile */
+        /* Menu mobile - CORRIGÉ : visible uniquement en responsive */
         .mobile-menu-btn {
             display: none;
+            /* Caché par défaut */
             color: var(--light-color);
-            font-size: 28px;
+            font-size: 24px;
             background: none;
             border: none;
             cursor: pointer;
             z-index: 1001;
-            padding: 5px;
+            padding: 5px 10px;
+            width: auto;
+            height: auto;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
         }
 
-        /* Hero Section avec Vidéo */
+        .mobile-menu-btn:hover {
+            opacity: 0.8;
+        }
+
+        /* Hero Section avec IMAGE au lieu de vidéo */
         .hero-section {
             padding-top: 150px;
             padding-bottom: 100px;
@@ -150,23 +160,23 @@
             align-items: center;
         }
 
-        .video-background {
+        /* REMPLACEMENT VIDÉO PAR IMAGE */
+        .hero-background {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             z-index: -2;
-        }
-
-        .video-background video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+            background-image: url('médias/fond.jpg');
+            /* MODIFIEZ ICI LE CHEMIN DE VOTRE IMAGE */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
             filter: brightness(0.9);
         }
 
-        .video-overlay {
+        .hero-overlay {
             position: absolute;
             top: 0;
             left: 0;
@@ -197,6 +207,7 @@
             }
         }
 
+        /* TITRE PRINCIPAL - TAILLE RÉDUITE EN RESPONSIVE */
         .hero-title {
             font-size: 3.5rem;
             font-weight: 800;
@@ -785,6 +796,17 @@
             color: rgba(255, 255, 255, 0.5);
         }
 
+        .footer-bottom a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-bottom a:hover {
+            color: var(--accent-color);
+            text-decoration: underline;
+        }
+
         /* Whatsapp Float */
         .whatsapp-float {
             position: fixed;
@@ -1067,8 +1089,13 @@
                 gap: 40px;
             }
 
+            /* TAILLE RÉDUITE DU TITRE PRINCIPAL EN RESPONSIVE */
             .hero-title {
-                font-size: 2.8rem;
+                font-size: 2.5rem !important;
+            }
+
+            .hero-subtitle {
+                font-size: 1.1rem;
             }
 
             .services-grid {
@@ -1076,7 +1103,7 @@
             }
 
             .devis-header h1 {
-                font-size: 2.8rem;
+                font-size: 2.5rem;
             }
 
             .devis-content {
@@ -1084,44 +1111,62 @@
                 gap: 30px;
             }
 
-            /* Menu mobile */
+            /* Menu mobile - VISIBLE UNIQUEMENT EN RESPONSIVE */
             .mobile-menu-btn {
-                display: block;
+                display: flex;
+                /* Affiché uniquement en responsive */
+                position: relative;
+                z-index: 1001;
             }
 
+            /* Cacher la navigation normale en responsive */
             .main-nav ul {
-                display: none;
+                display: none !important;
+            }
+
+            /* Afficher le menu mobile en responsive */
+            .main-nav ul.mobile-menu {
+                display: none !important;
                 flex-direction: column;
                 position: fixed;
                 top: 80px;
                 left: 0;
-                width: 100%;
-                background: linear-gradient(180deg, var(--primary-dark), var(--primary-color));
+                width: 250px;
+                height: calc(100vh - 80px);
+                background-color: var(--primary-color);
                 padding: 20px;
                 z-index: 1000;
-                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+                transition: transform 0.3s ease;
+                transform: translateX(-100%);
+                overflow-y: auto;
             }
 
-            .main-nav ul.active {
-                display: flex;
+            .main-nav ul.mobile-menu.active {
+                display: flex !important;
+                transform: translateX(0);
             }
 
-            .main-nav ul li {
-                margin: 0 0 15px 0;
+            .main-nav ul.mobile-menu li {
+                margin: 0 0 10px 0 !important;
                 width: 100%;
             }
 
-            .main-nav ul .nav-link {
+            .main-nav ul.mobile-menu .nav-link {
                 display: block;
-                padding: 15px;
-                text-align: center;
-                font-size: 18px;
-                border-radius: 5px;
+                padding: 12px 15px;
+                text-align: left;
+                font-size: 16px;
+                border-radius: 4px;
+                width: 100%;
+                background-color: transparent;
+                border-left: none;
+                color: var(--light-color);
             }
 
-            .main-nav ul .nav-link:hover {
-                background-color: var(--light-color);
-                color: var(--primary-dark);
+            .main-nav ul.mobile-menu .nav-link:hover {
+                background-color: rgba(255, 255, 255, 0.1);
+                color: var(--light-color);
             }
         }
 
@@ -1132,8 +1177,9 @@
                 min-height: 90vh;
             }
 
+            /* TAILLE ENCORE PLUS RÉDUITE SUR MOBILE */
             .hero-title {
-                font-size: 2.2rem;
+                font-size: 2rem !important;
             }
 
             .cta-buttons {
@@ -1165,7 +1211,7 @@
             }
 
             .devis-header h1 {
-                font-size: 2.2rem;
+                font-size: 2rem;
             }
 
             .devis-header h2 {
@@ -1184,6 +1230,17 @@
             .gallery-item {
                 height: 300px;
             }
+
+            /* Menu mobile pour mobiles */
+            .main-nav ul.mobile-menu {
+                width: 220px;
+                padding: 15px;
+            }
+
+            .mobile-menu-btn {
+                font-size: 22px;
+                padding: 4px 8px;
+            }
         }
 
         /* Pour les très petits écrans */
@@ -1200,6 +1257,11 @@
                 width: 100%;
                 max-width: 300px;
                 padding: 14px 20px;
+            }
+
+            /* TAILLE MINIMALE SUR TRÈS PETITS ÉCRANS */
+            .hero-title {
+                font-size: 1.8rem !important;
             }
 
             .devis-header h1 {
@@ -1226,6 +1288,17 @@
             .gallery-item {
                 height: 250px;
             }
+
+            /* Menu mobile pour très petits écrans */
+            .main-nav ul.mobile-menu {
+                width: 200px;
+                padding: 12px;
+            }
+
+            .mobile-menu-btn {
+                font-size: 20px;
+                padding: 3px 6px;
+            }
         }
     </style>
 </head>
@@ -1249,12 +1322,24 @@
                     </div>
                 </a>
 
+                <!-- Bouton hamburger - visible uniquement en responsive -->
                 <button class="mobile-menu-btn" id="mobileMenuBtn">
                     <i class="bi bi-list"></i>
                 </button>
 
                 <nav class="main-nav" id="mainNav">
+                    <!-- Navigation normale (visible sur desktop) -->
                     <ul id="navMenu">
+                        <li><a href="index.html" class="nav-link">Accueil</a></li>
+                        <li><a href="#services" class="nav-link">Services</a></li>
+                        <li><a href="galerie.html" class="nav-link">Galerie</a></li>
+                        <li><a href="#apropos" class="nav-link">À propos</a></li>
+                        <li><a href="#devis" class="nav-link">Devis</a></li>
+                        <li><a href="#contact" class="nav-link">Contact</a></li>
+                    </ul>
+
+                    <!-- Navigation mobile (cachée par défaut) -->
+                    <ul class="mobile-menu" id="mobileNavMenu">
                         <li><a href="index.html" class="nav-link">Accueil</a></li>
                         <li><a href="#services" class="nav-link">Services</a></li>
                         <li><a href="galerie.html" class="nav-link">Galerie</a></li>
@@ -1267,16 +1352,10 @@
         </div>
     </header>
 
-    <!-- Hero Section avec Vidéo AMÉLIORÉE -->
+    <!-- Hero Section avec IMAGE au lieu de vidéo -->
     <section id="accueil" class="hero-section">
-        <div class="video-background">
-            <video autoplay muted loop playsinline id="heroVideo">
-                <source src="médias/vidéo_fond_header.mp4" type="video/mp4">
-                <source src="médias/vidéo_fond_header.mp4" type="video/mp4">
-                <source src="médias/vidéo_fond_header.mp4" type="video/mp4">
-            </video>
-        </div>
-        <div class="video-overlay"></div>
+        <div class="hero-background"></div>
+        <div class="hero-overlay"></div>
 
         <div class="container">
             <div class="hero-content">
@@ -1666,7 +1745,7 @@
                 <div class="footer-col">
                     <a href="#" class="footer-logo">
                         <!-- Remplacez "médias/logo-stp-small.jpg" par le chemin de votre image logo plus petite -->
-                        <img src="médias/logo-stp-small.jpg" alt="Logo STP" class="footer-logo-img">
+                        <img src="médias/logo.jpg" alt="Logo STP" class="footer-logo-img">
                         <div class="footer-logo-text">
                             <div class="footer-logo-main">Service Toujours Profitable</div>
                             <div class="footer-logo-sub">Peinture Industrielle & Plafond Moderne</div>
@@ -1731,7 +1810,7 @@
                 <p>&copy; <span id="currentYear"></span> Service Toujours Profitable (STP). Tous droits réservés. |
                     Kolwezi, RDC</p>
                 <p>Site développé pour la promotion de l'entreprise de peinture industrielle et plafonds modernes par <a
-                        href="https://socrateedgard.github.io./portfolio/"></a>Socrate Kasongo</p>
+                        href="https://socrateedgard.github.io./portfolio/">Socrate Kasongo</a></p>
             </div>
         </div>
     </footer>
@@ -1745,37 +1824,84 @@
             // Mettre à jour l'année dans le footer
             document.getElementById('currentYear').textContent = new Date().getFullYear();
 
-            // Gestion de la vidéo de fond
-            const heroVideo = document.getElementById('heroVideo');
-            if (heroVideo) {
-                heroVideo.play().catch(function (error) {
-                    console.log("La vidéo n'a pas pu être lue automatiquement:", error);
-                    document.querySelector('.video-background').innerHTML =
-                        '<div style="width:100%;height:100%;background:linear-gradient(rgba(26,29,39,0.6), rgba(46,49,146,0.7)), url(https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80) center/cover;"></div>';
-                });
-            }
-
-            // Menu mobile - gestion du hamburger
+            // ========== MENU HAMBURGER - VISIBLE UNIQUEMENT EN RESPONSIVE ==========
             const mobileMenuBtn = document.getElementById('mobileMenuBtn');
             const navMenu = document.getElementById('navMenu');
+            const mobileNavMenu = document.getElementById('mobileNavMenu');
 
-            if (mobileMenuBtn && navMenu) {
-                mobileMenuBtn.addEventListener('click', function () {
-                    navMenu.classList.toggle('active');
-                    mobileMenuBtn.innerHTML = navMenu.classList.contains('active')
-                        ? '<i class="bi bi-x"></i>'
-                        : '<i class="bi bi-list"></i>';
+            // Fonction pour vérifier si on est en mode mobile
+            function isMobileView() {
+                return window.innerWidth <= 992;
+            }
+
+            if (mobileMenuBtn && navMenu && mobileNavMenu) {
+                // Cacher le menu mobile par défaut
+                mobileNavMenu.style.display = 'none';
+
+                mobileMenuBtn.addEventListener('click', function (e) {
+                    e.stopPropagation();
+
+                    // Basculer la classe active sur le menu mobile
+                    mobileNavMenu.classList.toggle('active');
+                    mobileNavMenu.style.display = mobileNavMenu.classList.contains('active') ? 'flex' : 'none';
+
+                    // Changer l'icône
+                    if (mobileNavMenu.classList.contains('active')) {
+                        mobileMenuBtn.innerHTML = '<i class="bi bi-x"></i>';
+                        // Empêcher le défilement du body
+                        document.body.style.overflow = 'hidden';
+                    } else {
+                        mobileMenuBtn.innerHTML = '<i class="bi bi-list"></i>';
+                        // Rétablir le défilement
+                        document.body.style.overflow = '';
+                    }
                 });
 
-                // Fermer le menu au clic sur un lien (uniquement en mobile)
+                // Fermer le menu au clic sur un lien
                 document.querySelectorAll('.nav-link').forEach(link => {
                     link.addEventListener('click', function () {
-                        // Vérifier si on est en mode mobile (menu hamburger actif)
-                        if (window.innerWidth <= 992 && navMenu.classList.contains('active')) {
-                            navMenu.classList.remove('active');
+                        if (isMobileView() && mobileNavMenu.classList.contains('active')) {
+                            mobileNavMenu.classList.remove('active');
+                            mobileNavMenu.style.display = 'none';
                             mobileMenuBtn.innerHTML = '<i class="bi bi-list"></i>';
+                            document.body.style.overflow = '';
                         }
                     });
+                });
+
+                // Fermer le menu en cliquant à l'extérieur (sur mobile)
+                document.addEventListener('click', function (event) {
+                    const isClickInsideNavbar = mobileNavMenu.contains(event.target) || mobileMenuBtn.contains(event.target);
+
+                    if (isMobileView() &&
+                        !isClickInsideNavbar &&
+                        mobileNavMenu.classList.contains('active')) {
+                        mobileNavMenu.classList.remove('active');
+                        mobileNavMenu.style.display = 'none';
+                        mobileMenuBtn.innerHTML = '<i class="bi bi-list"></i>';
+                        document.body.style.overflow = '';
+                    }
+                });
+
+                // Fermer le menu avec la touche Échap
+                document.addEventListener('keydown', function (event) {
+                    if (event.key === 'Escape' && mobileNavMenu.classList.contains('active')) {
+                        mobileNavMenu.classList.remove('active');
+                        mobileNavMenu.style.display = 'none';
+                        mobileMenuBtn.innerHTML = '<i class="bi bi-list"></i>';
+                        document.body.style.overflow = '';
+                    }
+                });
+
+                // Gérer le redimensionnement de la fenêtre
+                window.addEventListener('resize', function () {
+                    if (!isMobileView()) {
+                        // Si on repasse en mode desktop, fermer le menu mobile
+                        mobileNavMenu.classList.remove('active');
+                        mobileNavMenu.style.display = 'none';
+                        mobileMenuBtn.innerHTML = '<i class="bi bi-list"></i>';
+                        document.body.style.overflow = '';
+                    }
                 });
             }
 
@@ -1853,23 +1979,8 @@
                     }
                 });
             });
-
-            // Fermer le menu hamburger si on clique en dehors
-            document.addEventListener('click', function (event) {
-                const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-                const navMenu = document.getElementById('navMenu');
-
-                if (navMenu && navMenu.classList.contains('active') &&
-                    mobileMenuBtn && !mobileMenuBtn.contains(event.target) &&
-                    navMenu && !navMenu.contains(event.target)) {
-
-                    navMenu.classList.remove('active');
-                    mobileMenuBtn.innerHTML = '<i class="bi bi-list"></i>';
-                }
-            });
         });
     </script>
 </body>
-
 
 </html>
