@@ -239,32 +239,78 @@
         /* Conteneur média */
         .media-container {
             width: 100%;
+            height: 250px;
             overflow: hidden;
             background: #f8f9fa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         /* Images - taille naturelle */
         .gallery-item img {
             width: 100%;
-            height: auto;
-            max-height: 400px;
-            object-fit: contain;
+            height: 100%;
+            object-fit: cover;
             display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
         }
 
         /* Vidéos - taille naturelle */
         .gallery-item video {
             width: 100%;
-            height: auto;
-            max-height: 400px;
-            object-fit: contain;
+            height: 100%;
+            object-fit: cover;
             display: block;
+        }
+
+        /* Style spécifique pour les vidéos */
+        .video-container {
+            position: relative;
+        }
+
+        .video-play-btn {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60px;
+            height: 60px;
+            background: rgba(46, 49, 146, 0.8);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 10;
+            border: none;
+        }
+
+        .video-play-btn:hover {
+            background: rgba(46, 49, 146, 1);
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+
+        .video-play-btn.playing {
+            opacity: 0;
+            pointer-events: none;
         }
 
         .media-info {
             padding: 15px;
             background: white;
             border-top: 1px solid var(--border-color);
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
         .media-title {
@@ -474,9 +520,8 @@
                 font-size: 2rem;
             }
 
-            .gallery-item img,
-            .gallery-item video {
-                max-height: 350px;
+            .media-container {
+                height: 200px;
             }
 
             /* Menu mobile pour mobiles */
@@ -497,9 +542,8 @@
                 grid-template-columns: 1fr;
             }
 
-            .gallery-item img,
-            .gallery-item video {
-                max-height: 300px;
+            .media-container {
+                height: 180px;
             }
 
             /* Menu mobile pour très petits écrans */
@@ -553,11 +597,11 @@
                     <!-- Navigation mobile (cachée par défaut) -->
                     <ul class="mobile-menu" id="mobileNavMenu">
                         <li><a href="index.html" class="nav-link">Accueil</a></li>
-                        <li><a href="index.html" class="nav-link">Services</a></li>
+                        <li><a href="index.html#services" class="nav-link">Services</a></li>
                         <li><a href="galerie.html" class="nav-link">Galerie</a></li>
-                        <li><a href="index.html" class="nav-link">À propos</a></li>
-                        <li><a href="index.html" class="nav-link">Devis</a></li>
-                        <li><a href="index.html" class="nav-link">Contact</a></li>
+                        <li><a href="index.html#apropos" class="nav-link">À propos</a></li>
+                        <li><a href="index.html#devis" class="nav-link">Devis</a></li>
+                        <li><a href="index.html#contact" class="nav-link">Contact</a></li>
                     </ul>
                 </nav>
             </div>
@@ -625,11 +669,11 @@
                     <div class="footer-links">
                         <ul>
                             <li><a href="index.html">Accueil</a></li>
-                            <li><a href="index.html">Services</a></li>
+                            <li><a href="index.html#services">Services</a></li>
                             <li><a href="galerie.html">Galerie</a></li>
-                            <li><a href="index.html">À propos</a></li>
-                            <li><a href="index.html">Devis</a></li>
-                            <li><a href="index.html">Contact</a></li>
+                            <li><a href="index.html#À propos">À propos</a></li>
+                            <li><a href="index.html#devis">Devis</a></li>
+                            <li><a href="index.html#contact">Contact</a></li>
                         </ul>
                     </div>
                 </div>
@@ -776,17 +820,17 @@
 
             // ========== CHARGEMENT DES MÉDIAS ==========
             const mediaItems = [
-                { type: 'image', src: 'médias/réalisation1.jpg', title: 'Projet de peinture industrielle' },
-                { type: 'image', src: 'médias/réalisation2.jpg', title: 'Installation de plafond moderne' },
-                { type: 'image', src: 'médias/réalisation3.jpg', title: 'Rénovation complète' },
-                { type: 'image', src: 'médias/projet1.jpg', title: 'Projet commercial' },
-                { type: 'image', src: 'médias/IMG-20250101-WA0011.jpg', title: 'Réalisation STP' },
-                { type: 'image', src: 'médias/IMG-20250101-WA0012.jpg', title: 'Réalisation STP' },
-                { type: 'image', src: 'médias/IMG-20250101-WA0013.jpg', title: 'Réalisation STP' },
-                { type: 'image', src: 'médias/IMG-20250101-WA0014.jpg', title: 'Réalisation STP' },
-                { type: 'video', src: 'médias/VID-20250101-WA0004.mp4', title: 'Installation en cours' },
-                { type: 'video', src: 'médias/VID-20250101-WA0006.mp4', title: 'Projet terminé' },
-                { type: 'video', src: 'photos_videos/video1.mp4', title: 'Démonstration' }
+                { type: 'image', src: 'médias/réalisation1.jpg', title: 'Réalisation STP' },
+                { type: 'image', src: 'médias/réalisation2.jpg', title: 'Réalisation STP' },
+                { type: 'image', src: 'médias/réalisation3.jpg', title: 'Réalisation STP' },
+                { type: 'image', src: 'médias/réalisation4.jpg', title: 'Réalisation STP' },
+                { type: 'image', src: 'médias/projet1.jpg', title: 'Réalisation STP' },
+                { type: 'image', src: 'médias/projet2.jpg', title: 'Réalisation STP' },
+                { type: 'image', src: 'médias/projet3.jpg', title: 'Réalisation STP' },
+
+                { type: 'video', src: 'médias/video1.mp4', title: 'Réalisation STP' },
+                { type: 'video', src: 'médias/video2.mp4', title: 'Réalisation STP' },
+                { type: 'video', src: 'médias/video3.mp4', title: 'Réalisation STP' }
             ];
 
             function loadMedia() {
@@ -818,11 +862,14 @@
                         `;
                     } else {
                         mediaContent = `
-                            <div class="media-container">
-                                <video muted loop playsinline>
+                            <div class="media-container video-container">
+                                <video muted playsinline preload="metadata">
                                     <source src="${item.src}" type="video/mp4">
                                     Votre navigateur ne supporte pas la vidéo.
                                 </video>
+                                <button class="video-play-btn">
+                                    <i class="bi bi-play-fill"></i>
+                                </button>
                             </div>
                             <div class="media-info">
                                 <div class="media-title">${item.title}</div>
@@ -836,24 +883,50 @@
                     // Gestion des vidéos
                     if (item.type === 'video') {
                         const video = galleryItem.querySelector('video');
-                        if (video) {
-                            galleryItem.addEventListener('mouseenter', () => {
-                                video.play().catch(e => {
-                                    console.log("Autoplay bloqué par le navigateur");
-                                });
+                        const playBtn = galleryItem.querySelector('.video-play-btn');
+
+                        if (video && playBtn) {
+                            // Gestion du clic sur le bouton play
+                            playBtn.addEventListener('click', function (e) {
+                                e.stopPropagation();
+
+                                if (video.paused) {
+                                    video.play();
+                                    playBtn.classList.add('playing');
+                                    playBtn.innerHTML = '<i class="bi bi-pause-fill"></i>';
+                                } else {
+                                    video.pause();
+                                    playBtn.classList.remove('playing');
+                                    playBtn.innerHTML = '<i class="bi bi-play-fill"></i>';
+                                }
                             });
 
-                            galleryItem.addEventListener('mouseleave', () => {
-                                video.pause();
+                            // Gestion des événements de la vidéo
+                            video.addEventListener('play', function () {
+                                playBtn.classList.add('playing');
+                                playBtn.innerHTML = '<i class="bi bi-pause-fill"></i>';
+                            });
+
+                            video.addEventListener('pause', function () {
+                                playBtn.classList.remove('playing');
+                                playBtn.innerHTML = '<i class="bi bi-play-fill"></i>';
+                            });
+
+                            video.addEventListener('ended', function () {
+                                playBtn.classList.remove('playing');
+                                playBtn.innerHTML = '<i class="bi bi-play-fill"></i>';
                                 video.currentTime = 0;
                             });
                         }
                     }
 
-                    // Click pour ouvrir dans un nouvel onglet
-                    galleryItem.addEventListener('click', () => {
-                        if (item.src) {
-                            window.open(item.src, '_blank', 'noopener,noreferrer');
+                    // Click sur la card pour ouvrir dans un nouvel onglet (sauf si c'est sur le bouton play)
+                    galleryItem.addEventListener('click', function (e) {
+                        // Ne pas ouvrir le lien si on clique sur le bouton play
+                        if (!e.target.closest('.video-play-btn')) {
+                            if (item.src) {
+                                window.open(item.src, '_blank', 'noopener,noreferrer');
+                            }
                         }
                     });
 
