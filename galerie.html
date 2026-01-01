@@ -6,8 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Galerie - STP Service Toujours Profitable</title>
 
+    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
 
@@ -34,9 +37,20 @@
             font-family: 'Inter', sans-serif;
             color: var(--dark-color);
             line-height: 1.6;
+            overflow-x: hidden;
         }
 
-        /* --- NAVIGATION (Identique à index.html) --- */
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-weight: 700;
+            line-height: 1.3;
+        }
+
+        /* Header & Navigation - EXACTEMENT COMME INDEX.HTML */
         .main-header {
             position: fixed;
             top: 0;
@@ -46,6 +60,7 @@
             background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
             padding: 10px 0;
+            transition: all 0.3s ease;
         }
 
         .header-container {
@@ -70,6 +85,7 @@
             object-fit: cover;
             margin-right: 15px;
             border: 3px solid var(--light-color);
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
         }
 
         .logo-main {
@@ -84,227 +100,775 @@
             opacity: 0.8;
         }
 
-        /* Desktop Nav */
-        .main-nav .desktop-nav {
+        .main-nav ul {
             display: flex;
             list-style: none;
             margin: 0;
+            padding: 0;
         }
 
-        .main-nav .desktop-nav li {
-            margin-left: 20px;
+        .main-nav li {
+            margin-left: 30px;
         }
 
         .nav-link {
             color: var(--light-color);
-            text-decoration: none;
+            font-size: 15px;
             padding: 8px 15px;
             border-radius: 5px;
-            transition: 0.3s;
+            transition: background-color 0.3s, color 0.3s;
+            text-decoration: none;
         }
 
         .nav-link:hover,
         .nav-link.active {
-            background: var(--light-color);
+            background-color: var(--light-color);
             color: var(--primary-dark);
         }
 
-        /* Mobile Menu Style */
+        /* Menu mobile - EXACTEMENT COMME INDEX.HTML */
         .mobile-menu-btn {
             display: none;
+            color: var(--light-color);
+            font-size: 24px;
             background: none;
             border: none;
-            color: white;
-            font-size: 30px;
             cursor: pointer;
+            z-index: 1001;
+            padding: 5px 10px;
+            width: auto;
+            height: auto;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu-btn:hover {
+            opacity: 0.8;
         }
 
         .mobile-menu {
             display: none;
+            flex-direction: column;
             position: fixed;
             top: 80px;
             left: 0;
-            width: 100%;
-            background: var(--primary-color);
+            width: 250px;
+            height: calc(100vh - 80px);
+            background-color: var(--primary-color);
             padding: 20px;
-            z-index: 999;
-            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            transform: translateX(-100%);
+            overflow-y: auto;
         }
 
         .mobile-menu.active {
-            display: block;
-        }
-
-        .mobile-menu ul {
-            list-style: none;
-            padding: 0;
+            display: flex;
+            transform: translateX(0);
         }
 
         .mobile-menu li {
-            margin-bottom: 15px;
+            margin: 0 0 10px 0 !important;
+            width: 100%;
         }
 
-        @media (max-width: 992px) {
-            .desktop-nav {
-                display: none;
-            }
-
-            .mobile-menu-btn {
-                display: block;
-            }
+        .mobile-menu .nav-link {
+            display: block;
+            padding: 12px 15px;
+            text-align: left;
+            font-size: 16px;
+            border-radius: 4px;
+            width: 100%;
+            background-color: transparent;
+            border-left: none;
+            color: var(--light-color);
         }
 
-        /* --- GALERIE (Mode épuré) --- */
+        .mobile-menu .nav-link:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--light-color);
+        }
+
+        /* Page Header */
         .page-header {
             background: linear-gradient(rgba(46, 49, 146, 0.9), rgba(26, 28, 110, 0.9));
             color: white;
-            padding: 140px 0 60px;
+            padding: 180px 0 100px;
             text-align: center;
+            margin-top: 80px;
         }
 
+        .page-title {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+
+        /* Gallery Section */
         .gallery-section {
-            padding: 40px 0;
+            padding: 80px 0;
             background-color: var(--light-color);
         }
 
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 15px;
+            gap: 25px;
         }
 
         .gallery-item {
-            border-radius: 10px;
+            position: relative;
+            border-radius: 12px;
             overflow: hidden;
-            height: 300px;
             cursor: pointer;
-            transition: transform 0.3s;
-            background: #000;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            background: white;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            height: auto;
         }
 
         .gallery-item:hover {
             transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
         }
 
-        .gallery-item img,
+        /* Conteneur média */
+        .media-container {
+            width: 100%;
+            overflow: hidden;
+            background: #f8f9fa;
+        }
+
+        /* Images - taille naturelle */
+        .gallery-item img {
+            width: 100%;
+            height: auto;
+            max-height: 400px;
+            object-fit: contain;
+            display: block;
+        }
+
+        /* Vidéos - taille naturelle */
         .gallery-item video {
             width: 100%;
-            height: 100%;
-            object-fit: cover;
+            height: auto;
+            max-height: 400px;
+            object-fit: contain;
+            display: block;
         }
 
+        .media-info {
+            padding: 15px;
+            background: white;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .media-title {
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: var(--dark-color);
+        }
+
+        .media-type {
+            font-size: 12px;
+            color: var(--gray-color);
+            text-transform: uppercase;
+            font-weight: 500;
+        }
+
+        /* Footer */
         .main-footer {
-            background: var(--dark-color);
+            background-color: var(--dark-color);
             color: white;
-            padding: 30px;
+            padding: 80px 0 30px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            margin-bottom: 20px;
+        }
+
+        .footer-logo-img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 10px;
+            border: 2px solid var(--secondary-color);
+        }
+
+        .footer-logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .footer-logo-main {
+            font-size: 20px;
+            font-weight: 800;
+            color: white;
+            line-height: 1;
+        }
+
+        .footer-logo-sub {
+            font-size: 10px;
+            color: var(--secondary-color);
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .footer-description {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 20px;
+        }
+
+        .footer-title {
+            font-size: 1.2rem;
+            margin-bottom: 25px;
+            color: white;
+        }
+
+        .footer-links ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
             text-align: center;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        /* Whatsapp Float */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background-color: #25D366;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            box-shadow: 0 6px 15px rgba(37, 211, 102, 0.4);
+            z-index: 1000;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .whatsapp-float:hover {
+            background-color: #128C7E;
+            transform: scale(1.1);
+            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.5);
+        }
+
+        /* Back button */
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 40px;
+            transition: all 0.3s ease;
+            padding: 10px 25px;
+            border: 2px solid var(--primary-color);
+            border-radius: 5px;
+        }
+
+        .back-button:hover {
+            background-color: var(--primary-color);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        /* ====================== RESPONSIVE ====================== */
+
+        /* Pour les écrans moyens et petits */
+        @media (max-width: 992px) {
+
+            /* Menu mobile - VISIBLE UNIQUEMENT EN RESPONSIVE */
+            .mobile-menu-btn {
+                display: flex;
+                position: relative;
+                z-index: 1001;
+            }
+
+            /* Cacher la navigation normale en responsive */
+            .main-nav ul:not(.mobile-menu) {
+                display: none !important;
+            }
+
+            .page-title {
+                font-size: 2.5rem;
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+        }
+
+        /* Pour les écrans mobiles */
+        @media (max-width: 768px) {
+            .page-header {
+                padding: 150px 0 80px;
+            }
+
+            .page-title {
+                font-size: 2rem;
+            }
+
+            .gallery-item img,
+            .gallery-item video {
+                max-height: 350px;
+            }
+
+            /* Menu mobile pour mobiles */
+            .mobile-menu {
+                width: 220px;
+                padding: 15px;
+            }
+
+            .mobile-menu-btn {
+                font-size: 22px;
+                padding: 4px 8px;
+            }
+        }
+
+        /* Pour les très petits écrans */
+        @media (max-width: 480px) {
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-item img,
+            .gallery-item video {
+                max-height: 300px;
+            }
+
+            /* Menu mobile pour très petits écrans */
+            .mobile-menu {
+                width: 200px;
+                padding: 12px;
+            }
+
+            .mobile-menu-btn {
+                font-size: 20px;
+                padding: 3px 6px;
+            }
         }
     </style>
 </head>
 
 <body>
+    <!-- WhatsApp Float -->
+    <a href="https://wa.me/243971732221" class="whatsapp-float" target="_blank">
+        <i class="bi bi-whatsapp"></i>
+    </a>
 
+    <!-- Header - EXACTEMENT COMME INDEX.HTML -->
     <header class="main-header">
-        <div class="header-container">
-            <a href="index.html" class="logo">
-                <img src="médias/logo.jpg" alt="Logo STP" class="logo-img">
-                <div class="logo-text">
-                    <div class="logo-main">STP</div>
-                    <div class="logo-sub">Service Toujours Profitable</div>
-                </div>
-            </a>
+        <div class="container">
+            <div class="header-container">
+                <a href="index.html" class="logo">
+                    <img src="médias/logo.jpg" alt="Logo STP" class="logo-img">
+                    <div class="logo-text">
+                        <div class="logo-main">STP</div>
+                        <div class="logo-sub">Peinture Industrielle Plafond Moderne & autres services</div>
+                    </div>
+                </a>
 
-            <nav class="main-nav">
-                <ul class="desktop-nav">
-                    <li><a href="index.html" class="nav-link">Accueil</a></li>
-                    <li><a href="index.html#services" class="nav-link">Services</a></li>
-                    <li><a href="galerie.html" class="nav-link active">Galerie</a></li>
-                    <li><a href="index.html#contact" class="nav-link">Contact</a></li>
-                </ul>
-                <button class="mobile-menu-btn" id="mobileToggle">
+                <!-- Bouton hamburger - visible uniquement en responsive -->
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
                     <i class="bi bi-list"></i>
                 </button>
-            </nav>
+
+                <nav class="main-nav" id="mainNav">
+                    <!-- Navigation normale (visible sur desktop) -->
+                    <ul id="navMenu">
+                        <li><a href="index.html" class="nav-link">Accueil</a></li>
+                        <li><a href="index.html#services" class="nav-link">Services</a></li>
+                        <li><a href="galerie.html" class="nav-link active">Galerie</a></li>
+                        <li><a href="index.html#apropos" class="nav-link">À propos</a></li>
+                        <li><a href="index.html#devis" class="nav-link">Devis</a></li>
+                        <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+                    </ul>
+
+                    <!-- Navigation mobile (cachée par défaut) -->
+                    <ul class="mobile-menu" id="mobileNavMenu">
+                        <li><a href="index.html" class="nav-link">Accueil</a></li>
+                        <li><a href="index.html" class="nav-link">Services</a></li>
+                        <li><a href="galerie.html" class="nav-link">Galerie</a></li>
+                        <li><a href="index.html" class="nav-link">À propos</a></li>
+                        <li><a href="index.html" class="nav-link">Devis</a></li>
+                        <li><a href="index.html" class="nav-link">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
         </div>
     </header>
 
-    <div class="mobile-menu" id="mobileMenu">
-        <ul>
-            <li><a href="index.html" class="nav-link">Accueil</a></li>
-            <li><a href="index.html#services" class="nav-link">Services</a></li>
-            <li><a href="galerie.html" class="nav-link active">Galerie</a></li>
-            <li><a href="index.html#contact" class="nav-link">Contact</a></li>
-        </ul>
-    </div>
-
+    <!-- Page Header -->
     <section class="page-header">
         <div class="container">
-            <h1>Notre Galerie</h1>
-            <p>Découvrez nos réalisations (cliquez pour agrandir)</p>
+            <h1 class="page-title">Notre Galerie</h1>
+            <p class="lead">Découvrez nos réalisations en peinture industrielle et installation de plafonds modernes</p>
         </div>
     </section>
 
+    <!-- Gallery Section -->
     <section class="gallery-section">
         <div class="container">
             <div class="gallery-grid" id="galleryGrid">
+                <!-- Les médias seront chargés dynamiquement -->
+            </div>
+
+            <div class="text-center mt-5">
+                <a href="index.html" class="back-button">
+                    <i class="bi bi-arrow-left me-2"></i> Retour à l'accueil
+                </a>
             </div>
         </div>
     </section>
 
+    <!-- Footer -->
     <footer class="main-footer">
-        <p>&copy; 2024 STP Service Toujours Profitable. Tous droits réservés.</p>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <a href="index.html" class="footer-logo">
+                        <img src="médias/logo.jpg" alt="Logo STP" class="footer-logo-img">
+                        <div class="footer-logo-text">
+                            <div class="footer-logo-main">Service Toujours Profitable</div>
+                            <div class="footer-logo-sub">Peinture Industrielle & Plafond Moderne</div>
+                        </div>
+                    </a>
+                    <p class="footer-description">
+                        Expert en peinture industrielle et installation de plafonds modernes à Kolwezi.
+                        Service toujours profitable pour vos projets.
+                    </p>
+
+                    <div class="social-links">
+                        <a href="#" class="social-link">
+                            <i class="bi bi-facebook"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="bi bi-instagram"></i>
+                        </a>
+                        <a href="https://wa.me/243971732221" class="social-link" target="_blank">
+                            <i class="bi bi-whatsapp"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="bi bi-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h3 class="footer-title">Liens rapides</h3>
+                    <div class="footer-links">
+                        <ul>
+                            <li><a href="index.html">Accueil</a></li>
+                            <li><a href="index.html">Services</a></li>
+                            <li><a href="galerie.html">Galerie</a></li>
+                            <li><a href="index.html">À propos</a></li>
+                            <li><a href="index.html">Devis</a></li>
+                            <li><a href="index.html">Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h3 class="footer-title">Nos services</h3>
+                    <div class="footer-links">
+                        <ul>
+                            <li><a href="index.html">Peinture Industrielle</a></li>
+                            <li><a href="index.html">Plafonds Modernes</a></li>
+                            <li><a href="index.html">Peinture Décorative</a></li>
+                            <li><a href="index.html">Traitement de Surface</a></li>
+                            <li><a href="index.html">Rénovation & Maintenance</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h3 class="footer-title">Heures d'ouverture</h3>
+                    <div class="footer-links">
+                        <ul>
+                            <li><strong>Lundi - Vendredi:</strong> 7h30 - 18h00</li>
+                            <li><strong>Samedi:</strong> 8h00 - 14h00</li>
+                            <li><strong>Dimanche:</strong> Sur rendez-vous</li>
+                            <li><strong>Urgences:</strong> 24h/24</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; <span id="currentYear"></span> Service Toujours Profitable (STP). Tous droits réservés. |
+                    Kolwezi, RDC</p>
+                <p>Site développé pour la promotion de l'entreprise de peinture industrielle et plafonds modernes</p>
+            </div>
+        </div>
     </footer>
 
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
     <script>
+        // ========== INITIALISATION ==========
         document.addEventListener('DOMContentLoaded', function () {
+            console.log("✅ Page Galerie chargée");
 
-            // --- GESTION DU MENU MOBILE ---
-            const mobileToggle = document.getElementById('mobileToggle');
-            const mobileMenu = document.getElementById('mobileMenu');
+            // Mettre à jour l'année
+            document.getElementById('currentYear').textContent = new Date().getFullYear();
 
-            mobileToggle.addEventListener('click', function () {
-                mobileMenu.classList.toggle('active');
-                // Change l'icône entre menu et fermer
-                const icon = mobileToggle.querySelector('i');
-                if (mobileMenu.classList.contains('active')) {
-                    icon.className = 'bi bi-x';
-                } else {
-                    icon.className = 'bi bi-list';
-                }
-            });
+            // ========== MENU HAMBURGER - EXACTEMENT COMME INDEX.HTML ==========
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const navMenu = document.getElementById('navMenu');
+            const mobileNavMenu = document.getElementById('mobileNavMenu');
 
-            // --- CHARGEMENT DES MÉDIAS ---
-            const mediaItems = [
-                { type: 'image', src: 'médias/IMG-20250101-WA0011.jpg' },
-                { type: 'image', src: 'médias/IMG-20250101-WA0012.jpg' },
-                { type: 'image', src: 'médias/IMG-20250101-WA0013.jpg' },
-                { type: 'image', src: 'médias/IMG-20250101-WA0014.jpg' },
-                { type: 'video', src: 'médias/VID-20250101-WA0004.mp4' },
-                { type: 'video', src: 'médias/VID-20250101-WA0006.mp4' },
-                { type: 'video', src: 'médias/VID-20250101-WA0007.mp4' }
-            ];
+            // Fonction pour vérifier si on est en mode mobile
+            function isMobileView() {
+                return window.innerWidth <= 992;
+            }
 
-            const grid = document.getElementById('galleryGrid');
+            if (mobileMenuBtn && navMenu && mobileNavMenu) {
+                console.log("✅ Éléments du menu trouvés");
 
-            mediaItems.forEach(item => {
-                const card = document.createElement('div');
-                card.className = 'gallery-item';
+                // Cacher le menu mobile par défaut
+                mobileNavMenu.style.display = 'none';
 
-                if (item.type === 'image') {
-                    card.innerHTML = `<img src="${item.src}" alt="STP Galerie">`;
-                } else {
-                    card.innerHTML = `<video muted loop><source src="${item.src}" type="video/mp4"></video>`;
-                    card.addEventListener('mouseenter', () => card.querySelector('video').play());
-                    card.addEventListener('mouseleave', () => card.querySelector('video').pause());
-                }
+                mobileMenuBtn.addEventListener('click', function (e) {
+                    e.stopPropagation();
 
-                // Action au clic : ouvrir dans un nouvel onglet
-                card.addEventListener('click', () => {
-                    window.open(item.src, '_blank');
+                    // Basculer la classe active sur le menu mobile
+                    mobileNavMenu.classList.toggle('active');
+                    mobileNavMenu.style.display = mobileNavMenu.classList.contains('active') ? 'flex' : 'none';
+
+                    // Changer l'icône
+                    if (mobileNavMenu.classList.contains('active')) {
+                        mobileMenuBtn.innerHTML = '<i class="bi bi-x"></i>';
+                        // Empêcher le défilement du body
+                        document.body.style.overflow = 'hidden';
+                        console.log("📱 Menu mobile ouvert");
+                    } else {
+                        mobileMenuBtn.innerHTML = '<i class="bi bi-list"></i>';
+                        // Rétablir le défilement
+                        document.body.style.overflow = '';
+                        console.log("❌ Menu mobile fermé");
+                    }
                 });
 
-                grid.appendChild(card);
-            });
+                // Fermer le menu au clic sur un lien (MOBILE)
+                mobileNavMenu.querySelectorAll('.nav-link').forEach(link => {
+                    link.addEventListener('click', function () {
+                        if (isMobileView() && mobileNavMenu.classList.contains('active')) {
+                            mobileNavMenu.classList.remove('active');
+                            mobileNavMenu.style.display = 'none';
+                            mobileMenuBtn.innerHTML = '<i class="bi bi-list"></i>';
+                            document.body.style.overflow = '';
+                            console.log("🔗 Menu fermé après clic sur lien");
+                        }
+                    });
+                });
+
+                // Fermer le menu en cliquant à l'extérieur (MOBILE)
+                document.addEventListener('click', function (event) {
+                    const isClickInsideNavbar = mobileNavMenu.contains(event.target) || mobileMenuBtn.contains(event.target);
+
+                    if (isMobileView() &&
+                        !isClickInsideNavbar &&
+                        mobileNavMenu.classList.contains('active')) {
+                        mobileNavMenu.classList.remove('active');
+                        mobileNavMenu.style.display = 'none';
+                        mobileMenuBtn.innerHTML = '<i class="bi bi-list"></i>';
+                        document.body.style.overflow = '';
+                        console.log("👆 Menu fermé après clic extérieur");
+                    }
+                });
+
+                // Fermer le menu avec la touche Échap
+                document.addEventListener('keydown', function (event) {
+                    if (event.key === 'Escape' && mobileNavMenu.classList.contains('active')) {
+                        mobileNavMenu.classList.remove('active');
+                        mobileNavMenu.style.display = 'none';
+                        mobileMenuBtn.innerHTML = '<i class="bi bi-list"></i>';
+                        document.body.style.overflow = '';
+                        console.log("⎋ Menu fermé avec Échap");
+                    }
+                });
+
+                // Gérer le redimensionnement de la fenêtre
+                window.addEventListener('resize', function () {
+                    if (!isMobileView() && mobileNavMenu.classList.contains('active')) {
+                        // Si on repasse en mode desktop, fermer le menu mobile
+                        mobileNavMenu.classList.remove('active');
+                        mobileNavMenu.style.display = 'none';
+                        mobileMenuBtn.innerHTML = '<i class="bi bi-list"></i>';
+                        document.body.style.overflow = '';
+                        console.log("🖥️ Menu fermé après redimensionnement en desktop");
+                    }
+                });
+            } else {
+                console.error("❌ Éléments non trouvés:", {
+                    mobileMenuBtn: !!mobileMenuBtn,
+                    navMenu: !!navMenu,
+                    mobileNavMenu: !!mobileNavMenu
+                });
+            }
+
+            // ========== CHARGEMENT DES MÉDIAS ==========
+            const mediaItems = [
+                { type: 'image', src: 'médias/réalisation1.jpg', title: 'Projet de peinture industrielle' },
+                { type: 'image', src: 'médias/réalisation2.jpg', title: 'Installation de plafond moderne' },
+                { type: 'image', src: 'médias/réalisation3.jpg', title: 'Rénovation complète' },
+                { type: 'image', src: 'médias/projet1.jpg', title: 'Projet commercial' },
+                { type: 'image', src: 'médias/IMG-20250101-WA0011.jpg', title: 'Réalisation STP' },
+                { type: 'image', src: 'médias/IMG-20250101-WA0012.jpg', title: 'Réalisation STP' },
+                { type: 'image', src: 'médias/IMG-20250101-WA0013.jpg', title: 'Réalisation STP' },
+                { type: 'image', src: 'médias/IMG-20250101-WA0014.jpg', title: 'Réalisation STP' },
+                { type: 'video', src: 'médias/VID-20250101-WA0004.mp4', title: 'Installation en cours' },
+                { type: 'video', src: 'médias/VID-20250101-WA0006.mp4', title: 'Projet terminé' },
+                { type: 'video', src: 'photos_videos/video1.mp4', title: 'Démonstration' }
+            ];
+
+            function loadMedia() {
+                const galleryGrid = document.getElementById('galleryGrid');
+                if (!galleryGrid) {
+                    console.error("❌ galleryGrid non trouvé");
+                    return;
+                }
+
+                galleryGrid.innerHTML = '';
+
+                mediaItems.forEach((item, index) => {
+                    const galleryItem = document.createElement('div');
+                    galleryItem.className = 'gallery-item';
+                    galleryItem.setAttribute('data-index', index);
+
+                    let mediaContent = '';
+
+                    if (item.type === 'image') {
+                        mediaContent = `
+                            <div class="media-container">
+                                <img src="${item.src}" alt="${item.title}" loading="lazy"
+                                     onerror="this.onerror=null; this.src='https://via.placeholder.com/400x300/2E3192/FFFFFF?text=Image+non+disponible'">
+                            </div>
+                            <div class="media-info">
+                                <div class="media-title">${item.title}</div>
+                                <div class="media-type">Image</div>
+                            </div>
+                        `;
+                    } else {
+                        mediaContent = `
+                            <div class="media-container">
+                                <video muted loop playsinline>
+                                    <source src="${item.src}" type="video/mp4">
+                                    Votre navigateur ne supporte pas la vidéo.
+                                </video>
+                            </div>
+                            <div class="media-info">
+                                <div class="media-title">${item.title}</div>
+                                <div class="media-type">Vidéo</div>
+                            </div>
+                        `;
+                    }
+
+                    galleryItem.innerHTML = mediaContent;
+
+                    // Gestion des vidéos
+                    if (item.type === 'video') {
+                        const video = galleryItem.querySelector('video');
+                        if (video) {
+                            galleryItem.addEventListener('mouseenter', () => {
+                                video.play().catch(e => {
+                                    console.log("Autoplay bloqué par le navigateur");
+                                });
+                            });
+
+                            galleryItem.addEventListener('mouseleave', () => {
+                                video.pause();
+                                video.currentTime = 0;
+                            });
+                        }
+                    }
+
+                    // Click pour ouvrir dans un nouvel onglet
+                    galleryItem.addEventListener('click', () => {
+                        if (item.src) {
+                            window.open(item.src, '_blank', 'noopener,noreferrer');
+                        }
+                    });
+
+                    galleryGrid.appendChild(galleryItem);
+                });
+
+                console.log(`✅ ${mediaItems.length} médias chargés`);
+            }
+
+            loadMedia();
+        });
+
+        // Gestion des erreurs globales
+        window.addEventListener('error', function (e) {
+            console.error('❌ Erreur JavaScript:', e.message, 'à', e.filename, 'ligne', e.lineno);
         });
     </script>
 </body>
